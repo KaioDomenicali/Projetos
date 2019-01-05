@@ -24,10 +24,7 @@ def max_temp_aggregate_by_fog(filename):
     https://s3.amazonaws.com/content.udacity-data.com/courses/ud359/weather_underground.csv
     '''
     weather_data = pandas.read_csv(filename)
-
-    q = """
-    your query here
-    """
+    
     SELECT fog.max(cast (maxtempi as integer)) FROM weather_data GROUP BY fog
     
     #Execute your SQL command against the pandas frame
