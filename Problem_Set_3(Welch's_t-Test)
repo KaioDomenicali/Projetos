@@ -1,0 +1,17 @@
+# Welch's t-Test
+
+import numpy
+import scipy.stats
+import pandas
+
+def compare_averages(filename):
+
+baseball = pandas.read.csv(filename)
+left = baseball["avg"][baseball["handedness"]=="L"]
+right = baseball["avg"][baseball["handedness"]=="R"]
+
+(t,pvalue) = scipy.stats.ttest_ind(left, right, equal_var=False)
+print (pvalue)
+if pvalue<=0.05:
+    return (False,(t,pvalue))
+return (True,(t,pvalue))
